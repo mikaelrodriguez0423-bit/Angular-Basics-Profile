@@ -1,0 +1,600 @@
+
+/* =========================================
+   AVENGERS — CINEMATIC RESUME THEME
+   Professional Dark UI
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:host {
+  /* Avengers Color Palette */
+  --bg-dark: #080D1B;
+  --bg-panel: rgba(15, 25, 45, 0.92);
+
+  --avengers-blue: #173B70;
+  --avengers-blue-light: #2878C8;
+
+  --iron-red: #C62828;
+  --iron-red-light: #F04444;
+
+  --infinity-gold: #D6B65C;
+  --metallic-silver: #B8C4D6;
+
+  --text-main: #F4F7FC;
+  --text-muted: #A8B4C7;
+
+  /* Cinematic Glows */
+  --glow-blue: 0 0 22px rgba(40, 120, 200, 0.35);
+  --glow-red: 0 0 22px rgba(198, 40, 40, 0.35);
+  --glow-gold: 0 0 18px rgba(214, 182, 92, 0.3);
+
+  --cinematic-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.75);
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* =========================================
+   PAGE BACKGROUND
+========================================= */
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  min-height: 100vh;
+  padding: 50px 20px;
+
+  box-sizing: border-box;
+
+  background-color: var(--bg-dark);
+
+  background-image:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(40, 120, 200, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(198, 40, 40, 0.12),
+      transparent 40%
+    );
+
+  color: var(--text-main);
+  font-family: var(--font-body);
+
+  overflow-x: hidden;
+}
+
+/* =========================================
+   MAIN RESUME PANEL
+========================================= */
+
+.resume {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  padding: 60px;
+
+  background: var(--bg-panel);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(184, 196, 214, 0.15);
+  border-top: 4px solid var(--avengers-blue-light);
+
+  border-radius: 8px;
+
+  box-shadow:
+    var(--cinematic-shadow),
+    inset 0 0 40px rgba(40, 120, 200, 0.06);
+
+  animation: panelBootUp 1.2s
+    cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Avengers-style corner accents */
+
+.resume::before,
+.resume::after {
+  content: '';
+
+  position: absolute;
+
+  width: 35px;
+  height: 35px;
+
+  border: 2px solid var(--infinity-gold);
+
+  pointer-events: none;
+  opacity: 0.75;
+
+  transition: all 0.3s ease;
+}
+
+.resume::before {
+  top: -1px;
+  left: -1px;
+
+  border-right: none;
+  border-bottom: none;
+}
+
+.resume::after {
+  bottom: -1px;
+  right: -1px;
+
+  border-left: none;
+  border-top: none;
+}
+
+.resume:hover::before,
+.resume:hover::after {
+  width: 45px;
+  height: 45px;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--infinity-gold));
+}
+
+/* =========================================
+   HEADER / INTRO
+========================================= */
+
+.intro {
+  text-align: center;
+
+  padding-bottom: 35px;
+  margin-bottom: 45px;
+
+  border-bottom: 1px solid
+    rgba(40, 120, 200, 0.35);
+
+  position: relative;
+}
+
+.intro::after {
+  content: '';
+
+  position: absolute;
+
+  bottom: -1px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 130px;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    var(--avengers-blue-light),
+    var(--infinity-gold),
+    var(--iron-red)
+  );
+
+  box-shadow: var(--glow-blue);
+}
+
+.intro h1 {
+  font-family: var(--font-display);
+
+  margin: 0 0 12px;
+
+  color: #FFFFFF;
+
+  font-size: 4.5rem;
+
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1;
+
+  text-shadow:
+    2px 2px 0 var(--avengers-blue),
+    4px 4px 0 rgba(198, 40, 40, 0.6);
+
+  transition: all 0.3s ease;
+}
+
+.intro h1:hover {
+  text-shadow:
+    0 0 15px rgba(40, 120, 200, 0.7),
+    0 0 30px rgba(198, 40, 40, 0.4);
+}
+
+.intro p {
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+
+  margin: 8px 0;
+
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.intro a {
+  color: var(--infinity-gold);
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+
+  font-weight: 700;
+}
+
+.intro a:hover {
+  color: #FFFFFF;
+  text-shadow: var(--glow-gold);
+}
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+section {
+  margin: 40px 0;
+
+  animation: fadeIn 0.8s ease forwards;
+}
+
+section h2 {
+  font-family: var(--font-display);
+
+  color: var(--metallic-silver);
+
+  font-size: 2.1rem;
+
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+section h2::before {
+  content: '';
+
+  display: inline-block;
+
+  width: 6px;
+  height: 30px;
+
+  background: linear-gradient(
+    180deg,
+    var(--avengers-blue-light),
+    var(--iron-red)
+  );
+
+  margin-right: 15px;
+
+  box-shadow: var(--glow-blue);
+
+  border-radius: 2px;
+}
+
+section h2::after {
+  content: '';
+
+  flex-grow: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(184, 196, 214, 0.35),
+    transparent
+  );
+
+  margin-left: 20px;
+}
+
+/* Section paragraph */
+
+section p {
+  color: var(--text-muted);
+
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+/* =========================================
+   SKILLS — AVENGERS ID CARDS
+========================================= */
+
+ul {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(200px, 1fr));
+
+  gap: 15px;
+
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+ul li {
+  background: linear-gradient(
+    135deg,
+    rgba(40, 120, 200, 0.12),
+    rgba(255, 255, 255, 0.025)
+  );
+
+  border: 1px solid
+    rgba(184, 196, 214, 0.13);
+
+  border-left: 3px solid var(--avengers-blue-light);
+
+  padding: 16px 18px;
+
+  border-radius: 5px;
+
+  color: var(--text-main);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  position: relative;
+
+  transition: all 0.3s ease;
+
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+ul li:hover {
+  background: rgba(40, 120, 200, 0.16);
+
+  border-color: var(--infinity-gold);
+  border-left: 3px solid var(--infinity-gold);
+
+  transform: translateY(-4px);
+
+  color: #FFFFFF;
+
+  box-shadow:
+    var(--glow-blue),
+    0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   INTERACTION BUTTON
+========================================= */
+
+button {
+  font-family: var(--font-display);
+
+  background: linear-gradient(
+    135deg,
+    var(--avengers-blue),
+    #10284A
+  );
+
+  color: #FFFFFF;
+
+  border: 1px solid var(--avengers-blue-light);
+
+  padding: 13px 38px;
+
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+
+  margin-top: 20px;
+
+  border-radius: 4px;
+
+  box-shadow: var(--glow-blue);
+}
+
+button::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+
+  transition: left 0.5s ease;
+}
+
+button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--iron-red),
+    #861919
+  );
+
+  border-color: var(--iron-red-light);
+
+  box-shadow: var(--glow-red);
+
+  transform: translateY(-2px);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--infinity-gold);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   INTERACTION TERMINAL
+========================================= */
+
+.interaction p {
+  font-family: 'Courier New', monospace;
+
+  color: var(--infinity-gold);
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  margin-bottom: 15px;
+  padding: 12px 16px;
+
+  background: rgba(214, 182, 92, 0.06);
+
+  border-left: 3px solid var(--infinity-gold);
+
+  display: inline-block;
+
+  animation: textPulse 2s infinite;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes panelBootUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.65;
+    text-shadow: 0 0 12px var(--infinity-gold);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+  :host {
+    padding: 20px 10px;
+  }
+
+  .resume {
+    padding: 30px 20px;
+  }
+
+  .intro h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .intro p {
+    font-size: 0.75rem;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+  }
+
+  section h2 {
+    font-size: 1.7rem;
+  }
+
+  ul {
+    grid-template-columns: 1fr;
+  }
+
+  .resume::before,
+  .resume::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 400px) {
+  .resume {
+    padding: 25px 15px;
+  }
+
+  .intro h1 {
+    font-size: 2.4rem;
+  }
+
+  section h2 {
+    font-size: 1.45rem;
+    letter-spacing: 2px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
